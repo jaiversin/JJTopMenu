@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JJTopMenuViewController.h"
 
-@interface JJViewController : UIViewController
+
+@interface JJViewController : UIViewController <JJTopMenuDelegate>
 
 @end

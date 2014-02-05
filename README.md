@@ -1,8 +1,54 @@
 JJTopMenu
 =========
 
-Simple top menu with selected indicator.
+[Beta] Simple top menu with selected indicator.
 
+How to use it
+=============
+
+Import this on your controller:
+
+    #import "JJTopMenuViewController.h"
+
+Add a [private] strong property to your controller:
+
+    @interface MyViewController ()
+
+    @property (nonatomic, strong) JJTopMenuViewController *menuVC;
+
+    @end
+
+
+Then instantiate the JJTopMenuViewController, maybe on your viewDidLoad:
+
+    self.menuVC = [[JJTopMenuViewController alloc] initWithMenuItems:@[ [JJMenuItem initWithTitle:@"item 1" image:[UIImage imageNamed:@"forkandknife"] badgeValue:nil], [JJMenuItem initWithTitle:@"item 2" image:[UIImage imageNamed:@"pinetree"] badgeValue:nil]] selectedItemColor:[UIColor redColor] selectedItemTextColor:[UIColor grayColor] itemTextColor:[UIColor blueColor]];
+
+Here, you can set the Items for the menu (right now you can set the title and the image, the badgeValue is not ready) and the properties:
+
+    selectedItemColor // The color of the underline for the selected item
+    selectedItemTextColor // The color of the text for the selected item
+    itemTextColor // The color of the normal state of the items
+    TODO: Add custom font, background and alignment
+
+After this, make the layout specific settings for the frame of the view on JJTopMenuViewController and add it to the superview:
+
+    self.menuVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 60);
+    [self.view addSubview:self.menuVC.view];
+
+Set the delegate to handle the menu items selection:
+
+    self.menuVC.delegate = self;
+
+
+The only (till now) method available on the protocol is the didSelectMenuItemAtIndex:
+
+    -(void)topMenu:(JJTopMenuViewController *)menu didSelectMenuItemAtIndex:(NSUInteger)index;
+    
+
+And this is it. All your feedback is appreciated!
+
+
+@jaiversin
 
 
 

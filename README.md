@@ -48,8 +48,8 @@ The only (till now) method available on the protocol is the didSelectMenuItemAtI
 And this is it. All your feedback is appreciated!
 
 
-@jaiversin
 
+[@jaiversin](https://twitter.com/jaiversin "Twitt me!")
 
 
 License

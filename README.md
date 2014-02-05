@@ -3,6 +3,8 @@ JJTopMenu
 
 [Beta] Simple top menu with selected indicator, based on the style of [ICViewPager](https://github.com/monsieurje/ICViewPager).
 
+<img src="JJTopMenu-1.png" alt="Screenshot" width="340px"/>
+
 How to use it
 =============
 

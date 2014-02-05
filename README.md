@@ -1,7 +1,7 @@
 JJTopMenu
 =========
 
-[Beta] Simple top menu with selected indicator.
+[Beta] Simple top menu with selected indicator, based on the style of [ICViewPager](https://github.com/monsieurje/ICViewPager).
 
 How to use it
 =============

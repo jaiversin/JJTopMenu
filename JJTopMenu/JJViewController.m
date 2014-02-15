@@ -24,6 +24,8 @@
     [super viewDidLoad];
 	
     
+    
+    
     self.menuVC = [[JJTopMenuViewController alloc] initWithMenuItems:@[[JJMenuItem initWithTitle:@"item 1" image:[UIImage imageNamed:@"forkandknife"] badgeValue:nil], [JJMenuItem initWithTitle:@"item 2" image:[UIImage imageNamed:@"pinetree"] badgeValue:nil],[JJMenuItem initWithTitle:@"item 3" image:[UIImage imageNamed:@"fuel"] badgeValue:nil]] selectedItemColor:[UIColor redColor] selectedItemTextColor:[UIColor grayColor] itemTextColor:[UIColor blueColor]];
     
     self.menuVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -56,6 +58,8 @@
             [self.menuVC setSelectedItemTextColor:[UIColor darkGrayColor]];
             
             [self.menuVC setItemTextColor:[UIColor blueColor]];
+            
+            [self.view setBackgroundColor:[UIColor whiteColor]];
             break;
         case 1:
             [self.menuVC setMenuPosition:JJMenuPositionTop];
@@ -65,6 +69,8 @@
             [self.menuVC setSelectedItemTextColor:[UIColor cyanColor]];
             
             [self.menuVC setItemTextColor:[UIColor yellowColor]];
+            
+            [self.view setBackgroundColor:[UIColor blackColor]];
             break;
         default:
             [self.menuVC setMenuPosition:JJMenuPositionBottom];
@@ -74,6 +80,8 @@
             [self.menuVC setSelectedItemTextColor:[UIColor magentaColor]];
             
             [self.menuVC setItemTextColor:[UIColor redColor]];
+            
+            [self.view setBackgroundColor:[UIColor lightGrayColor]];
             break;
     }
     

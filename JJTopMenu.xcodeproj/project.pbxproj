@@ -500,6 +500,7 @@
 				2587238718A1A87300FCAAFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2587238818A1A87300FCAAFB /* Build configuration list for PBXNativeTarget "JJTopMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +509,7 @@
 				2587238A18A1A87300FCAAFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

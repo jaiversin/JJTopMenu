@@ -35,8 +35,7 @@
 
 #pragma mark - Properties
 @property (nonatomic, copy) NSArray *menuItems;
-@property (nonatomic, weak) JJMenuItem *selectedMenuItem;
-@property (weak, nonatomic) IBOutlet UILabel *userDisplayName;
+@property (nonatomic, strong) JJMenuItem *selectedMenuItem;
 @property (nonatomic, strong) UIColor *selectedItemColor;
 @property (nonatomic, strong) UIColor *selectedItemTextColor;
 @property (nonatomic, strong) UIColor *itemTextColor;

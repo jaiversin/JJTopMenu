@@ -16,7 +16,7 @@
 
 @implementation JJTopMenuViewController
 
-@synthesize itemTextColor = _itemTextColor, menuPosition = _menuPosition;
+@synthesize itemTextColor = _itemTextColor, menuPosition = _menuPosition, selectedItemColor = _selectedItemColor, selectedItemTextColor = _selectedItemTextColor;
 
 -(id)initWithMenuItems:(NSArray *)menuItems{
     self = [self initWithMenuItems:menuItems selectedItemColor:nil selectedItemTextColor:nil itemTextColor:nil];
@@ -110,8 +110,21 @@
     return _menuPosition;
 }
 
+#pragma mark - Setters
 -(void)setItemTextColor:(UIColor *)itemTextColor{
     _itemTextColor = itemTextColor;
+    [self updateMenuItemsProperties];
+}
+
+-(void)setSelectedItemTextColor:(UIColor *)selectedItemTextColor
+{
+    _selectedItemTextColor = selectedItemTextColor;
+    [self updateMenuItemsProperties];
+}
+
+-(void)setSelectedItemColor:(UIColor *)selectedItemColor
+{
+    _selectedItemColor = selectedItemColor;
     [self updateMenuItemsProperties];
 }
 

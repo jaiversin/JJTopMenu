@@ -27,9 +27,10 @@ Then instantiate the JJTopMenuViewController, maybe on your viewDidLoad:
 
 Here, you can set the Items for the menu (right now you can set the title and the image, the badgeValue is not ready) and the properties:
 
-    selectedItemColor // The color of the underline for the selected item
+    selectedItemColor // The color of the indicator line for the selected item
     selectedItemTextColor // The color of the text for the selected item
     itemTextColor // The color of the normal state of the items
+    menuPosition //The position of the indicator line for the selected item
     TODO: Add custom font, background and alignment
 
 After this, make the layout specific settings for the frame of the view on JJTopMenuViewController and add it to the superview:

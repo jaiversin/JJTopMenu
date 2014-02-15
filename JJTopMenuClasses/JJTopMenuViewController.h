@@ -34,7 +34,7 @@
 @property(nonatomic, weak) id delegate;
 
 #pragma mark - Properties
-@property (nonatomic, copy) NSArray *menuItems;
+@property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) JJMenuItem *selectedMenuItem;
 @property (nonatomic, strong) UIColor *selectedItemColor;
 @property (nonatomic, strong) UIColor *selectedItemTextColor;

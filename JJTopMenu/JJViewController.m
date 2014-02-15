@@ -7,7 +7,6 @@
 //
 
 #import "JJViewController.h"
-#import "JJTopMenuViewController.h"
 
 @interface JJViewController ()
 

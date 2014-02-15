@@ -30,7 +30,7 @@ Here, you can set the Items for the menu (right now you can set the title and th
     selectedItemColor // The color of the indicator line for the selected item
     selectedItemTextColor // The color of the text for the selected item
     itemTextColor // The color of the normal state of the items
-    menuPosition //The position of the indicator line for the selected item
+    menuPosition //The position of the indicator line for the selected item (JJMenuPositionTop/JJMenuPositionBottom)
     TODO: Add custom font, background and alignment
 
 After this, make the layout specific settings for the frame of the view on JJTopMenuViewController and add it to the superview:

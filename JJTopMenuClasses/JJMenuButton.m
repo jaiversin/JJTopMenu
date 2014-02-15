@@ -53,9 +53,23 @@
         bezierPath = [UIBezierPath bezierPath];
         
         // Draw the indicator
-        [bezierPath moveToPoint:CGPointMake(0.0, CGRectGetHeight(rect) - 1.0)];
-        [bezierPath addLineToPoint:CGPointMake(CGRectGetWidth(rect), CGRectGetHeight(rect) - 1.0)];
-        [bezierPath setLineWidth:5.0];
+        
+        switch (self.menuPosition) {
+            case JJMenuPositionBottom:
+                [bezierPath moveToPoint:CGPointMake(0.0, CGRectGetHeight(rect) - 1.0)];
+                [bezierPath addLineToPoint:CGPointMake(CGRectGetWidth(rect), CGRectGetHeight(rect) - 1.0)];
+                break;
+            case JJMenuPositionTop:
+                [bezierPath moveToPoint:CGPointMake(0.0, 0.0)];
+            [bezierPath addLineToPoint:CGPointMake(CGRectGetWidth(rect), 0.0)];
+                break;
+            default:
+                [bezierPath moveToPoint:CGPointMake(0.0, CGRectGetHeight(rect) - 1.0)];
+                [bezierPath addLineToPoint:CGPointMake(CGRectGetWidth(rect), CGRectGetHeight(rect) - 1.0)];
+                break;
+        }
+        
+        [bezierPath setLineWidth:10.0];
         [self.selectedItemColor setStroke];
         [bezierPath stroke];
     }

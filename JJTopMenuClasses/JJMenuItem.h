@@ -10,7 +10,7 @@
 #import "JJMenuButton.h"
 
 static float const LEFT_PADDING = 25.0f;
-static float const RJJHT_PADDING = 25.0f;
+static float const RIGHT_PADDING = 5.0f;
 static NSString * const EmptyString = @"";
 
 
@@ -23,6 +23,8 @@ static NSString * const EmptyString = @"";
 @property (nonatomic, strong) UIColor *selectedItemColor;
 @property (nonatomic, strong) UIColor *selectedItemTextColor;
 @property (nonatomic, strong) UIColor *itemTextColor;
+
+@property (nonatomic) JJMenuPosition menuPosition;
 
 
 + (id)itemWithTitle:(NSString *)title image:(UIImage *)image;

@@ -16,6 +16,8 @@
 
 @implementation JJTopMenuViewController
 
+@synthesize itemTextColor = _itemTextColor, menuPosition = _menuPosition;
+
 -(id)initWithMenuItems:(NSArray *)menuItems{
     self = [self initWithMenuItems:menuItems selectedItemColor:nil selectedItemTextColor:nil itemTextColor:nil];
     
@@ -75,7 +77,7 @@
     [super didReceiveMemoryWarning];
 }
 
-
+#pragma mark - Default Values
 -(UIColor *)selectedItemColor
 {
     if (!_selectedItemColor) {
@@ -100,6 +102,25 @@
     return _selectedItemTextColor;
 }
 
+-(JJMenuPosition)menuPosition
+{
+    if (!_menuPosition) {
+        _menuPosition = JJMenuPositionTop;
+    }
+    return _menuPosition;
+}
+
+-(void)setItemTextColor:(UIColor *)itemTextColor{
+    _itemTextColor = itemTextColor;
+    [self updateMenuItemsProperties];
+}
+
+-(void)setMenuPosition:(JJMenuPosition)menuPosition
+{
+    _menuPosition = menuPosition;
+    [self updateMenuItemsProperties];
+}
+
 #pragma mark - Setting Buttons
 
 - (void)setMenuItems:(NSArray *)menuItems{
@@ -108,30 +129,29 @@
         [button removeFromSuperview];
     }
     
-    NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:self.menuItems.count];
-    
-    for (NSUInteger i = 0; i < menuItems.count; i++) {
-        JJMenuItem *item = [menuItems objectAtIndex:i];
-        [item setSelectedItemColor:self.selectedItemColor];
-        [item setSelectedItemTextColor:self.selectedItemTextColor];
-        [item setItemTextColor:self.itemTextColor];
-        
-        [buttons addObject:item.button];
-    }
-    
-    _menuItems = buttons;
-    
-    // Adding the action to the buttons
-    for (id button in self.menuItems) {
-        
-        [button addTarget:self action:@selector(selectMenuItem:) forControlEvents:UIControlEventTouchDown];
-    }
+    _menuItems = menuItems;
+    [self updateMenuItemsProperties];
+//    NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:self.menuItems.count];
+//    
+//    for (NSUInteger i = 0; i < menuItems.count; i++) {
+//        JJMenuItem *item = [menuItems objectAtIndex:i];
+//        [item setSelectedItemColor:self.selectedItemColor];
+//        [item setSelectedItemTextColor:self.selectedItemTextColor];
+//        [item setItemTextColor:self.itemTextColor];
+//        [item setMenuPosition:self.menuPosition];
+//        
+//        [buttons addObject:item.button];
+//    }
+//
+//    _menuItems = buttons;
     
     int index = 0;
-    for (UIButton *button in self.menuItems) {
+    for (JJMenuItem *menuItem in self.menuItems) {
+        JJMenuButton *button = menuItem.button;
+        
         float originX = 0;
         if (index) {
-            UIButton *lastButton = self.menuItems[index-1];
+            UIButton *lastButton = ((JJMenuItem *)self.menuItems[index-1]).button;
             originX = CGRectGetMinX(lastButton.frame) + CGRectGetWidth(lastButton.bounds);
         }
         
@@ -139,29 +159,61 @@
         [button setFrame:frame];
         [self.view addSubview:button];
         index++;
+        
+        // Adding the action to the buttons
+        [button addTarget:self action:@selector(selectMenuItem:) forControlEvents:UIControlEventTouchDown];
     }
     
     if (self.menuItems && [self.menuItems count] > 0) {
-        [self selectMenuItem:self.menuItems[0]];
+        [self selectMenuItem:((JJMenuItem *)self.menuItems[0]).button];
     }
 
 }
 
 - (void)selectMenuItem:(id)sender
 {
+    
+    JJMenuItem *selectedItem = [self getMenuItemForButton:sender];
+    
     // check for non selected button
-    if (self.selectedMenuItem != sender) {
-        for (id item in self.menuItems) {
-            [item setSelected:NO];
+    if (self.selectedMenuItem != selectedItem) {
+        
+        for (JJMenuItem *item in self.menuItems) {
+            [item.button setSelected:NO];
         }
-        [sender setSelected:YES];
-        self.selectedMenuItem = sender;
+        
+        [selectedItem.button setSelected:YES];
+        self.selectedMenuItem = selectedItem;
         
         if (self.delegate && [self.delegate respondsToSelector:@selector(topMenu:didSelectMenuItemAtIndex:)]) {
-            [self.delegate topMenu:self didSelectMenuItemAtIndex:[self.menuItems indexOfObject:sender]];
+            [self.delegate topMenu:self didSelectMenuItemAtIndex:[self.menuItems indexOfObject:selectedItem]];
         }
     }
 }
 
+-(JJMenuItem *)getMenuItemForButton:(JJMenuButton *)button
+{
+    for (JJMenuItem *currentItem in self.menuItems) {
+        if (currentItem.button == button) {
+            return currentItem;
+        }
+    }
+    
+    return nil;
+}
+
+-(void)updateMenuItemsProperties
+{
+    
+    for (NSUInteger i = 0; i < self.menuItems.count; i++) {
+        JJMenuItem *item = [self.menuItems objectAtIndex:i];
+        [item setSelectedItemColor:self.selectedItemColor];
+        [item setSelectedItemTextColor:self.selectedItemTextColor];
+        [item setItemTextColor:self.itemTextColor];
+        [item setMenuPosition:self.menuPosition];
+        
+    }
+
+}
 
 @end

@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum {
+    JJMenuPositionTop = 1,
+    JJMenuPositionBottom = 2
+}JJMenuPosition;
+
 @interface JJMenuButton : UIButton
 
 @property (nonatomic, strong) UIColor *selectedItemColor;
+
+@property (nonatomic) JJMenuPosition menuPosition;
 
 @end

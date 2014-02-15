@@ -35,12 +35,13 @@
 
 #pragma mark - Properties
 @property (nonatomic, copy) NSArray *menuItems;
-@property (nonatomic, weak) UIButton *selectedMenuItem;
+@property (nonatomic, weak) JJMenuItem *selectedMenuItem;
 @property (weak, nonatomic) IBOutlet UILabel *userDisplayName;
 @property (nonatomic, strong) UIColor *selectedItemColor;
 @property (nonatomic, strong) UIColor *selectedItemTextColor;
 @property (nonatomic, strong) UIColor *itemTextColor;
 @property (nonatomic) float menuHeight;
+@property (nonatomic) JJMenuPosition menuPosition;
 
 #pragma mark - Actions
 - (void)selectMenuItem:(id)sender;

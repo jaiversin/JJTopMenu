@@ -58,7 +58,9 @@
         [_button setTitleColor:self.selectedItemTextColor forState:UIControlStateHighlighted];
         [_button setSelectedItemColor:self.selectedItemTextColor];
         
+        [_button setSelectedItemColor:self.selectedItemColor];
         
+        _button.menuPosition = self.menuPosition;
         
         float imageWidth = 0.f;
         if (image) {
@@ -72,14 +74,14 @@
             _button.imageEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 30);
         }
         
-        [_button setSelectedItemColor:self.selectedItemColor];
+        
         
         [_button setTitle:title forState:UIControlStateNormal];
         
-        _button.titleEdgeInsets = UIEdgeInsetsMake(0, LEFT_PADDING, 0, RJJHT_PADDING);
+        _button.titleEdgeInsets = UIEdgeInsetsMake(0, LEFT_PADDING, 0, RIGHT_PADDING);
         
         CGSize titleSize = [title sizeWithAttributes:@{ NSFontAttributeName: self.itemFont }];
-        _button.frame = CGRectMake(_button.frame.origin.x, _button.frame.origin.y, titleSize.width + LEFT_PADDING + RJJHT_PADDING + imageWidth, _button    .frame.size.height);
+        _button.frame = CGRectMake(_button.frame.origin.x, _button.frame.origin.y, titleSize.width + LEFT_PADDING + RIGHT_PADDING + imageWidth, _button    .frame.size.height);
         
         _button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         
@@ -108,5 +110,10 @@
     [_button setTitleColor:self.selectedItemTextColor forState:UIControlStateHighlighted];
 }
 
+-(void)setMenuPosition:(JJMenuPosition)menuPosition
+{
+    _menuPosition = menuPosition;
+    [_button setMenuPosition:menuPosition];
+}
 
 @end

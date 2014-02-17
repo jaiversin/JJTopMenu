@@ -5,6 +5,13 @@ JJTopMenu
 
 <img src="JJTopMenu-1.png" alt="Screenshot" width="340px"/>
 
+How install
+=============
+
+Drag the .m and .h files in the JJTopMenuClasses folder to your project or use CocoaPods:
+
+    pod 'JJTopMenu', '~> 1.0.1'
+
 How to use it
 =============
 

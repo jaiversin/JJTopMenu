@@ -44,5 +44,6 @@
 
 #pragma mark - Actions
 - (void)selectMenuItem:(id)sender;
+-(void)selectMenuItemAtIndex:(NSUInteger)index;
 
 @end

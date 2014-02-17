@@ -32,9 +32,11 @@
     
     [self.menuVC setMenuPosition:JJMenuPositionBottom];
     
+    
+    
     [self.view addSubview:self.menuVC.view];
     self.menuVC.delegate = self;
-    
+    [self.menuVC selectMenuItemAtIndex:1];
 }
 
 - (void)didReceiveMemoryWarning

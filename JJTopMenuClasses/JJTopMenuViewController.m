@@ -204,6 +204,13 @@
     }
 }
 
+-(void)selectMenuItemAtIndex:(NSUInteger)index
+{
+    id itemToSelect = ((JJMenuItem *)self.menuItems[index]).button;
+    
+    [self selectMenuItem:itemToSelect];
+}
+
 -(JJMenuItem *)getMenuItemForButton:(JJMenuButton *)button
 {
     for (JJMenuItem *currentItem in self.menuItems) {

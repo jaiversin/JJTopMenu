@@ -222,6 +222,11 @@
     return nil;
 }
 
+-(NSUInteger)getIndexForSelectedMenu
+{
+    return [self.menuItems indexOfObject:self.selectedMenuItem];;
+}
+
 -(void)updateMenuItemsProperties
 {
     

@@ -61,6 +61,9 @@
             [self.menuVC setItemTextColor:[UIColor blueColor]];
             
             [self.view setBackgroundColor:[UIColor whiteColor]];
+            
+            NSLog(@"Menu Index: %lu", (unsigned long)[self.menuVC getIndexForSelectedMenu]);
+            
             break;
         case 1:
             [self.menuVC setMenuPosition:JJMenuPositionTop];
@@ -72,6 +75,8 @@
             [self.menuVC setItemTextColor:[UIColor yellowColor]];
             
             [self.view setBackgroundColor:[UIColor blackColor]];
+            
+            NSLog(@"Menu Index: %lu", (unsigned long)[self.menuVC getIndexForSelectedMenu]);
             break;
         default:
             [self.menuVC setMenuPosition:JJMenuPositionBottom];
@@ -83,6 +88,8 @@
             [self.menuVC setItemTextColor:[UIColor redColor]];
             
             [self.view setBackgroundColor:[UIColor lightGrayColor]];
+            
+            NSLog(@"Menu Index: %lu", (unsigned long)[self.menuVC getIndexForSelectedMenu]);
             break;
     }
     

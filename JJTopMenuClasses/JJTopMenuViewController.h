@@ -41,9 +41,11 @@
 @property (nonatomic, strong) UIColor *itemTextColor;
 @property (nonatomic) float menuHeight;
 @property (nonatomic) JJMenuPosition menuPosition;
+@property (nonatomic) NSUInteger selectedIndex;
 
 #pragma mark - Actions
 - (void)selectMenuItem:(id)sender;
 -(void)selectMenuItemAtIndex:(NSUInteger)index;
+- (NSUInteger)getIndexForSelectedMenu;
 
 @end

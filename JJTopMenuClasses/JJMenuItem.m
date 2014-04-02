@@ -8,8 +8,11 @@
 
 #import "JJMenuItem.h"
 #import "JJMenuButton.h"
+#import "LKBadgeView.h"
 
 @interface JJMenuItem()
+
+@property(nonatomic, strong) LKBadgeView *badge;
 
 @end
 
@@ -24,6 +27,12 @@
 + (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue
 {
     return [[self alloc] initWithTitle:title image:image badgeValue:badgeValue];
+}
+
+
++ (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue keyPath:(NSString *)keyPath
+{
+    return [[self alloc] initWithTitle:title image:image badgeValue:badgeValue keyPath:keyPath];
 }
 
 - (id)initWithTitle:(NSString *)title image:(UIImage *)image
@@ -42,9 +51,10 @@
     return _itemFont;
 }
 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue keyPath:(NSString *)keyPath
 {
     if(self = [super init]){
+        _keyPathForObserving = keyPath;
         _title = title;
         _button = [JJMenuButton buttonWithType:UIButtonTypeCustom];
         
@@ -80,15 +90,47 @@
         
         _button.titleEdgeInsets = UIEdgeInsetsMake(0, LEFT_PADDING, 0, RIGHT_PADDING);
         
-//        CGSize titleSize = [title sizeWithAttributes:@{ NSFontAttributeName: self.itemFont }];
+        //        CGSize titleSize = [title sizeWithAttributes:@{ NSFontAttributeName: self.itemFont }];
         CGSize titleSize = [title sizeWithFont:self.itemFont];
-
+        
         _button.frame = CGRectMake(_button.frame.origin.x, _button.frame.origin.y, titleSize.width + LEFT_PADDING + RIGHT_PADDING + imageWidth, _button    .frame.size.height);
         
         _button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         
+        
+        
+        _badge = [[LKBadgeView alloc] initWithFrame:CGRectMake(5, 50, 35, 30)];
+        [_button addSubview:_badge];
+        
+        //Setting the badge value
+        if (badgeValue != nil && ![badgeValue isEqualToString:EmptyString]) {
+            _badge.text = badgeValue;
+            _badge.horizontalAlignment = LKBadgeViewHorizontalAlignmentRight;
+            _badge.widthMode = LKBadgeViewWidthModeStandard;
+            _badge.badgeColor = [UIColor redColor];
+        }
+        
     }
     return self;
+}
+
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue
+{
+    if ((self = [self initWithTitle:title image:image badgeValue:badgeValue keyPath:EmptyString])) {
+        
+    }
+    return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:self.keyPathForObserving]) {
+        self.badgeValue = [change objectForKey:NSKeyValueChangeNewKey];
+    }
+    
 }
 
 #pragma mark - Setters
@@ -117,5 +159,12 @@
     _menuPosition = menuPosition;
     [_button setMenuPosition:menuPosition];
 }
+
+-(void)setBadgeValue:(NSString *)badgeValue
+{
+    _badgeValue = badgeValue;
+    self.badge.text = badgeValue?badgeValue:nil;
+}
+
 
 @end

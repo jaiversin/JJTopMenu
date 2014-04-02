@@ -17,6 +17,8 @@ static NSString * const EmptyString = @"";
 @interface JJMenuItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *badgeValue;
+@property (nonatomic, copy) NSString *keyPathForObserving;
 @property (nonatomic, strong) JJMenuButton *button;
 
 @property (nonatomic, strong) UIFont *itemFont;
@@ -29,6 +31,8 @@ static NSString * const EmptyString = @"";
 
 + (id)itemWithTitle:(NSString *)title image:(UIImage *)image;
 + (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue;
++ (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue keyPath:(NSString *)keyPath;
 - (id)initWithTitle:(NSString *)title image:(UIImage *)image;
 - (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image badgeValue:(NSString *)badgeValue keyPath:(NSString *)keyPath;
 @end

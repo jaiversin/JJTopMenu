@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "JJMenuItem.h"
 
+
+
+static void * MessagesContext = &MessagesContext;
+
 @class JJTopMenuViewController;
 
 @protocol JJTopMenuDelegate <NSObject>

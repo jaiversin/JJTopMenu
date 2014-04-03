@@ -99,7 +99,7 @@
         
         
         
-        _badge = [[LKBadgeView alloc] initWithFrame:CGRectMake(5, 50, 35, 30)];
+        _badge = [[LKBadgeView alloc] initWithFrame:CGRectMake(5, 5, 35, 30)];
         [_button addSubview:_badge];
         
         //Setting the badge value

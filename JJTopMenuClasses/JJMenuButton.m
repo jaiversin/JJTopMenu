@@ -69,7 +69,7 @@
                 break;
         }
         
-        [bezierPath setLineWidth:10.0];
+        [bezierPath setLineWidth:15.0];
         [self.selectedItemColor setStroke];
         [bezierPath stroke];
     }

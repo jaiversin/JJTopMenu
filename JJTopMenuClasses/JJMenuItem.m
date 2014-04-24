@@ -73,6 +73,7 @@
         _button.menuPosition = self.menuPosition;
         
         float imageWidth = 0.f;
+        float imageLeftPadding = 0.f;
         if (image) {
             
             [_button setImage:image forState:UIControlStateNormal];
@@ -80,6 +81,7 @@
             [_button setImage:image forState:UIControlStateHighlighted];
             
             imageWidth = image.size.width;
+            imageLeftPadding = 20.f;
             
             _button.imageEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 30);
         }
@@ -88,7 +90,7 @@
         
         [_button setTitle:title forState:UIControlStateNormal];
         
-        _button.titleEdgeInsets = UIEdgeInsetsMake(0, LEFT_PADDING, 0, RIGHT_PADDING);
+        _button.titleEdgeInsets = UIEdgeInsetsMake(0, LEFT_PADDING + imageLeftPadding, 0, RIGHT_PADDING);
         
         //        CGSize titleSize = [title sizeWithAttributes:@{ NSFontAttributeName: self.itemFont }];
         CGSize titleSize = [title sizeWithFont:self.itemFont];

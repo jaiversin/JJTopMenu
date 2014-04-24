@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JJMenuButton.h"
 
-static float const LEFT_PADDING = 25.0f;
+static float const LEFT_PADDING = 5.0f;
 static float const RIGHT_PADDING = 5.0f;
 static NSString * const EmptyString = @"";
 

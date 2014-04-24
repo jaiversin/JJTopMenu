@@ -27,7 +27,7 @@
     [super viewDidLoad];
 	
     
-    JJMenuItem *menuItem = [JJMenuItem initWithTitle:@"item 1" image:[UIImage imageNamed:@"forkandknife"] badgeValue:@"" keyPath:@"menuOne"];
+    JJMenuItem *menuItem = [JJMenuItem initWithTitle:@"item 1" image:nil badgeValue:@"" keyPath:@"menuOne"];
     
     self.menuVC = [[JJTopMenuViewController alloc] initWithMenuItems:@[menuItem, [JJMenuItem initWithTitle:@"item 2" image:[UIImage imageNamed:@"pinetree"] badgeValue:nil],[JJMenuItem initWithTitle:@"item 3" image:[UIImage imageNamed:@"fuel"] badgeValue:nil]] selectedItemColor:[UIColor redColor] selectedItemTextColor:[UIColor grayColor] itemTextColor:[UIColor blueColor]];
     

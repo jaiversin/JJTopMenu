@@ -92,8 +92,7 @@
         
         _button.titleEdgeInsets = UIEdgeInsetsMake(0, LEFT_PADDING + imageLeftPadding, 0, RIGHT_PADDING);
         
-        //        CGSize titleSize = [title sizeWithAttributes:@{ NSFontAttributeName: self.itemFont }];
-        CGSize titleSize = [title sizeWithFont:self.itemFont];
+        CGSize titleSize = [title sizeWithAttributes:@{ NSFontAttributeName: self.itemFont }];
         
         _button.frame = CGRectMake(_button.frame.origin.x, _button.frame.origin.y, titleSize.width + LEFT_PADDING + RIGHT_PADDING + imageWidth + imageLeftPadding, _button    .frame.size.height);
         
